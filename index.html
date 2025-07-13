@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Analog Clock</title>
+<style>
+body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0;background:#f0f0f0;font-family:sans-serif;}
+#clock{position:relative;width:300px;height:300px;border:8px solid #333;border-radius:50%;background:white;}
+.hand{position:absolute;top:50%;left:50%;transform-origin:bottom center;background:#333;}
+.hour{width:8px;height:80px;margin-left:-4px;margin-top:-80px;}
+.minute{width:4px;height:120px;margin-left:-2px;margin-top:-120px;}
+.second{width:2px;height:140px;margin-left:-1px;margin-top:-140px;background:red;}
+.center{position:absolute;width:12px;height:12px;background:#333;border-radius:50%;top:50%;left:50%;margin-top:-6px;margin-left:-6px;}
+</style>
+</head>
+<body>
+<div id="clock">
+<div class="hand hour" id="hour"></div>
+<div class="hand minute" id="minute"></div>
+<div class="hand second" id="second"></div>
+<div class="center"></div>
+</div>
+<script>
+function updateClock(){
+  const now=new Date();
+  const sec=now.getSeconds();
+  const min=now.getMinutes();
+  const hr=now.getHours()%12;
+  document.getElementById('second').style.transform=`rotate(${sec*6}deg)`;
+  document.getElementById('minute').style.transform=`rotate(${min*6+sec*0.1}deg)`;
+  document.getElementById('hour').style.transform=`rotate(${hr*30+min*0.5}deg)`;
+}
+setInterval(updateClock,1000);
+updateClock();
+</script>
+</body>
+</html>
