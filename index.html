@@ -11,7 +11,6 @@ body{display:flex;justify-content:center;align-items:center;height:100vh;margin:
 .minute{width:4px;height:120px;margin-left:-2px;margin-top:-120px;}
 .second{width:2px;height:140px;margin-left:-1px;margin-top:-140px;background:red;}
 .center{position:absolute;width:12px;height:12px;background:#333;border-radius:50%;top:50%;left:50%;margin-top:-6px;margin-left:-6px;}
-.number{position:absolute;top:50%;left:50%;transform-origin:center;font-size:24px;font-weight:bold;user-select:none;}
 </style>
 </head>
 <body>
@@ -22,14 +21,6 @@ body{display:flex;justify-content:center;align-items:center;height:100vh;margin:
 <div class="center"></div>
 </div>
 <script>
-for(let n=1;n<=12;n++){
-  const d=document.createElement('div');
-  d.className='number';
-  d.textContent=n;
-  const ang=n*30;
-  d.style.transform=`rotate(${ang}deg) translateY(-130px) rotate(-${ang}deg)`;
-  document.getElementById('clock').appendChild(d);
-}
 function updateClock(){
   const now=new Date();
   const sec=now.getSeconds();
